@@ -1,0 +1,23 @@
+{
+  "site": {
+    "titleSuffix": " | 股票精靈"
+  },
+  "navbar": {
+    "title": "股票精靈"
+  },
+  "footer": {
+    "poweredBy": "<brand>Lation</brand> 製作"
+  },
+  "home": {
+    "title": "股票精靈",
+    "description": "台灣股票市場小精靈"
+  },
+  "404": {
+    "title": "404",
+    "description": "找不到頁面"
+  },
+  "error": {
+    "title": "錯誤",
+    "description": "發生無法預期的錯誤"
+  }
+}

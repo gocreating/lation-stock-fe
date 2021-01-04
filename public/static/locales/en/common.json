@@ -1,0 +1,23 @@
+{
+  "site": {
+    "titleSuffix": " | Stock Wizard"
+  },
+  "navbar": {
+    "title": "Stock Wizard"
+  },
+  "footer": {
+    "poweredBy": "Powered by <brand>Lation</brand>"
+  },
+  "home": {
+    "title": "Stock",
+    "description": "A stock wizard for Taiwan market."
+  },
+  "404": {
+    "title": "404",
+    "description": "This page could not be found."
+  },
+  "error": {
+    "title": "Error",
+    "description": "Something weng wrong."
+  }
+}
