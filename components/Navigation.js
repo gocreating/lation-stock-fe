@@ -1,4 +1,3 @@
-import Container from 'react-bootstrap/Container'
 import Image from 'react-bootstrap/Image'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -7,7 +6,7 @@ import { i18n, withTranslation, Link } from '../i18n'
 const Navigation = ({ t }) => {
   return (
     <>
-      <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" style={{ marginBottom: '2rem' }}>
+      <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">

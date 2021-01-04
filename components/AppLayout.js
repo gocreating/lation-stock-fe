@@ -9,7 +9,7 @@ import { withTranslation } from '../i18n'
 import { adUnitIdMap } from '../utils/config'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const AppLayout = ({ t, title, titleSuffix, children }) => {
+const AppLayout = ({ t, title, titleSuffix, noContainer, children }) => {
   titleSuffix = titleSuffix === false ? '' : t('site.titleSuffix')
   return (
     <>
@@ -20,9 +20,11 @@ const AppLayout = ({ t, title, titleSuffix, children }) => {
       <GoogleAnalyticsHeader />
       <FacebookMessengerHeader />
       <Navigation />
-      <Container>
-        {children}
-      </Container>
+      {noContainer ? children : (
+        <Container>
+          {children}
+        </Container>
+      )}
       <Container style={{ marginTop: '2rem', overflow: 'auto' }}>
         <GoogleAdSenseAdUnit adUnitId={adUnitIdMap.adunit_stock_banner} />
       </Container>
