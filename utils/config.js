@@ -4,3 +4,8 @@ export const adUnitIdMap = {
   adunit_stock_banner: '1118864149',
 }
 export const FACEBOOK_PAGE_ID = '100157145366403'
+export const API_HOST = (
+  process.env.NODE_ENV === 'production'
+    ? 'https://stock-api.lation.app:5555'
+    : 'http://localhost:8000'
+)
