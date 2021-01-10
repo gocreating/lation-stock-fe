@@ -1,6 +1,8 @@
 {
   "site": {
-    "titleSuffix": " | Stock Wizard"
+    "titleSuffix": " | Stock Wizard",
+    "title": "Stock Wizard",
+    "description": "A stock wizard for Taiwan market, automating your routine stock operation"
   },
   "navbar": {
     "title": "Stock Wizard"

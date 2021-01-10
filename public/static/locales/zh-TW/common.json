@@ -1,6 +1,8 @@
 {
   "site": {
-    "titleSuffix": " | 股票精靈"
+    "titleSuffix": " | 股票精靈",
+    "title": "股票精靈",
+    "description": "台灣股票市場小精靈，輔助簡化您瑣碎的股市操作"
   },
   "navbar": {
     "title": "股票精靈"
