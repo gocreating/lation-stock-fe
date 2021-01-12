@@ -2,7 +2,8 @@
   "site": {
     "titleSuffix": " | 股票精靈",
     "title": "股票精靈",
-    "description": "台灣股票市場小精靈，輔助簡化您瑣碎的股市操作"
+    "description": "台灣股票市場小精靈，輔助簡化您瑣碎的股市操作",
+    "keywords": "股票精靈,股票資訊,即時,即時股票資訊"
   },
   "navbar": {
     "title": "股票精靈"

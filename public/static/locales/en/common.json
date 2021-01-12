@@ -2,7 +2,8 @@
   "site": {
     "titleSuffix": " | Stock Wizard",
     "title": "Stock Wizard",
-    "description": "A stock wizard for Taiwan market, automating your routine stock operation"
+    "description": "A stock wizard for Taiwan market, automating your routine stock operation",
+    "keywords": "Stock Wizard,Stock Information,Real Time,Real Time Stock Information"
   },
   "navbar": {
     "title": "Stock Wizard"
