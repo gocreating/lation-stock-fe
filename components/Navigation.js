@@ -1,7 +1,10 @@
 import Image from 'react-bootstrap/Image'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import NavDropdown from 'react-bootstrap/NavDropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton'
 import { i18n, withTranslation, Link } from '../i18n'
+import { API_HOST } from '../utils/config'
 
 const Navigation = ({ t }) => {
   return (
@@ -27,6 +30,18 @@ const Navigation = ({ t }) => {
           <Nav>
             <Nav.Link onClick={() => i18n.changeLanguage('en')}>English</Nav.Link>
             <Nav.Link onClick={() => i18n.changeLanguage('zh-TW')}>中文</Nav.Link>
+            <DropdownButton
+              variant="light"
+              menuAlign="right"
+              title={t('navbar.login.title')}
+            >
+              <NavDropdown.Item href={`${API_HOST}/auth/line`}>
+                <i className="fab fa-line"></i> {t('navbar.login.dropdown.line')}
+              </NavDropdown.Item>
+              <NavDropdown.Item href={`${API_HOST}/auth/google`}>
+                <i className="fab fa-google"></i> {t('navbar.login.dropdown.google')}
+              </NavDropdown.Item>
+            </DropdownButton>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

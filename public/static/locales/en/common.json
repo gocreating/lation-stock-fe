@@ -6,7 +6,14 @@
     "keywords": "Stock Wizard,Stock Information,Real Time,Real Time Stock Information"
   },
   "navbar": {
-    "title": "Stock Wizard"
+    "title": "Stock Wizard",
+    "login": {
+      "title": "Login",
+      "dropdown": {
+        "line": "Login with Line",
+        "google": "Login with Google"
+      }
+    }
   },
   "footer": {
     "poweredBy": "Powered by <brand>Lation</brand>"

@@ -6,7 +6,14 @@
     "keywords": "股票精靈,股票資訊,即時,即時股票資訊"
   },
   "navbar": {
-    "title": "股票精靈"
+    "title": "股票精靈",
+    "login": {
+      "title": "登入",
+      "dropdown": {
+        "line": "使用 Line 登入",
+        "google": "使用 Google 登入"
+      }
+    }
   },
   "footer": {
     "poweredBy": "<brand>Lation</brand> 製作"
