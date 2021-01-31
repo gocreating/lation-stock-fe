@@ -40,6 +40,9 @@ const Navigation = ({ t }) => {
                 menuAlign="right"
                 title={t('navbar.user.title')}
               >
+                <NavDropdown.Item href="/me/profile">
+                  主頁
+                </NavDropdown.Item>
                 <NavDropdown.Item onClick={() => dispatch(logout())}>
                   {t('navbar.user.dropdown.logout')}
                 </NavDropdown.Item>

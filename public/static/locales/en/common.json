@@ -34,6 +34,11 @@
       "cta": "Back to Homepage"
     }
   },
+  "me": {
+    "profile": {
+      "title": "My Profile"
+    }
+  },
   "404": {
     "title": "404",
     "description": "This page could not be found."
