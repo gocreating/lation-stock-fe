@@ -18,10 +18,6 @@ const AppLayout = ({ t, title, titleSuffix, noContainer, children }) => {
   titleSuffix = titleSuffix === false ? '' : t('site.titleSuffix')
   return (
     <>
-      <Head>
-        <title>{`${title}${titleSuffix}`}</title>
-        <link rel="icon" href="/logo.png" />
-      </Head>
       <NextSeo
         title={t('site.title')}
         description={t('site.description')}
@@ -33,6 +29,10 @@ const AppLayout = ({ t, title, titleSuffix, noContainer, children }) => {
           href: `https://stock.lation.app/zh-TW${router.pathname}`,
         }]}
       />
+      <Head>
+        <title>{`${title}${titleSuffix}`}</title>
+        <link rel="icon" href="/logo.png" />
+      </Head>
       <ProductJsonLd
         productName={t('site.title')}
         description={t('site.description')}
