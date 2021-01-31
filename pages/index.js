@@ -3,6 +3,7 @@ import Badge from 'react-bootstrap/Badge'
 import Container from 'react-bootstrap/Container'
 import Image from 'react-bootstrap/Image'
 import Jumbotron from 'react-bootstrap/Jumbotron'
+import Spinner from 'react-bootstrap/Spinner'
 import AppLayout from '../components/AppLayout'
 import { withTranslation } from '../i18n'
 import { API_HOST } from '../utils/config'
@@ -39,9 +40,9 @@ const HomePage = ({ t }) => {
         {showWordCloud ? (
           <Image src={`${API_HOST}/static/latest-push-content-cut-words.png`} rounded fluid />
         ) : (
-          <p>
-            載入中...
-          </p>
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
         )}
         <p style={{ marginTop: '2rem' }}>
           {words.map((word, i) => (
