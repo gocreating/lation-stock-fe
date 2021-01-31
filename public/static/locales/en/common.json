@@ -13,6 +13,12 @@
         "line": "Login with Line",
         "google": "Login with Google"
       }
+    },
+    "user": {
+      "title": "Me",
+      "dropdown": {
+        "logout": "Logout"
+      }
     }
   },
   "footer": {
@@ -21,6 +27,12 @@
   "home": {
     "title": "Stock",
     "description": "A stock wizard for Taiwan market, automating your routine stock operation."
+  },
+  "auth": {
+    "loginError": {
+      "title": "Login Failed",
+      "cta": "Back to Homepage"
+    }
   },
   "404": {
     "title": "404",

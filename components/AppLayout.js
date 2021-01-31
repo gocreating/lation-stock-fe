@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import Container from 'react-bootstrap/Container'
 import { Trans } from 'react-i18next'
 import { FacebookMessengerHeader, FacebookMessengerChatPlugin } from './FacebookMessenger'
+import GlobalStatus from './GlobalStatus'
 import { GoogleAnalyticsHeader } from './GoogleAnalytics'
 import { GoogleAdSenseAdUnit } from '../components/GoogleAdSense'
 import Navigation from './Navigation'
@@ -18,6 +19,7 @@ const AppLayout = ({ t, title, titleSuffix, noContainer, children }) => {
   titleSuffix = titleSuffix === false ? '' : t('site.titleSuffix')
   return (
     <>
+      <GlobalStatus />
       <NextSeo
         title={t('site.title')}
         description={t('site.description')}
@@ -53,7 +55,7 @@ const AppLayout = ({ t, title, titleSuffix, noContainer, children }) => {
       <FacebookMessengerHeader />
       <Navigation />
       {noContainer ? children : (
-        <Container>
+        <Container style={{ marginTop: '2rem', overflow: 'auto' }}>
           {children}
         </Container>
       )}

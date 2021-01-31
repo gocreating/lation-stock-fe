@@ -13,6 +13,12 @@
         "line": "使用 Line 登入",
         "google": "使用 Google 登入"
       }
+    },
+    "user": {
+      "title": "我",
+      "dropdown": {
+        "logout": "登出"
+      }
     }
   },
   "footer": {
@@ -21,6 +27,12 @@
   "home": {
     "title": "股票精靈",
     "description": "台灣股票市場小精靈，輔助簡化您瑣碎的股市操作"
+  },
+  "auth": {
+    "loginError": {
+      "title": "登入失敗",
+      "cta": "回到首頁"
+    }
   },
   "404": {
     "title": "404",

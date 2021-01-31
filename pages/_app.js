@@ -3,6 +3,7 @@ import App from 'next/app'
 import { useRouter } from 'next/router'
 import * as gtag from '../utils/gtag'
 import { appWithTranslation } from '../i18n'
+import { wrapper } from '../store'
 import '../styles/global.css'
 
 const LationApp = ({ Component, pageProps }) => {
@@ -23,4 +24,4 @@ const LationApp = ({ Component, pageProps }) => {
 
 LationApp.getInitialProps = async (appContext) => ({ ...await App.getInitialProps(appContext) })
 
-export default appWithTranslation(LationApp)
+export default wrapper.withRedux(appWithTranslation(LationApp))
