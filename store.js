@@ -3,15 +3,17 @@ import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 import authReducer from './ducks/auth'
+import productReducer from './ducks/product'
 
 const appReducer = combineReducers({
   auth: authReducer,
+  product: productReducer,
 })
 
 const rootReducer = (state = {}, action) => {
   switch (action.type) {
     case HYDRATE:
-      return {...state, ...action.payload}
+      return { ...state, ...action.payload }
     default:
       return appReducer(state, action)
   }
@@ -38,4 +40,4 @@ const makeStore = context => {
   return store
 }
 
-export const wrapper = createWrapper(makeStore, {debug: false})
+export const wrapper = createWrapper(makeStore, { debug: false })
