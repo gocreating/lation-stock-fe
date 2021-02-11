@@ -47,7 +47,24 @@
   "me": {
     "subscription": {
       "title": "My Subscriptions",
-      "noSubscription": "You don't have subscriptions."
+      "noSubscription": "You don't have subscriptions.",
+      "table": {
+        "head": {
+          "product": "Product",
+          "plan": "Plan",
+          "subscriptionStatus": "Subscription Status"
+        },
+        "alert": {
+          "description": "You must add line offical account to friend to receive notifications",
+          "cta": "Add to Friend"
+        },
+        "checkbox": {
+          "label": {
+            "checked": "Receive notifications",
+            "unchecked": "Paused"
+          }
+        }
+      }
     }
   },
   "404": {

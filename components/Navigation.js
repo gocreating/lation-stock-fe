@@ -16,7 +16,7 @@ const Navigation = ({ t }) => {
       <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav className="mr-auto" style={{ alignItems: 'center'}}>
             <Link href="/" passHref>
               <Navbar.Brand>
                 <Image
@@ -24,11 +24,15 @@ const Navigation = ({ t }) => {
                   style={{
                     width: 50,
                     height: 50,
-                    marginRight: 16,
                   }}
                 />
-                {t('navbar.title')}
               </Navbar.Brand>
+            </Link>
+            <Link href="/" passHref>
+              <Nav.Link>{t('navbar.title')}</Nav.Link>
+            </Link>
+            <Link href="/product" passHref>
+              <Nav.Link>{t('navbar.product')}</Nav.Link>
             </Link>
           </Nav>
           <Nav>
@@ -40,8 +44,8 @@ const Navigation = ({ t }) => {
                 menuAlign="right"
                 title={t('navbar.user.title')}
               >
-                <NavDropdown.Item href="/me/profile">
-                  主頁
+                <NavDropdown.Item href="/me/subscription">
+                  {t('navbar.user.dropdown.subscription')}
                 </NavDropdown.Item>
                 <NavDropdown.Item onClick={() => dispatch(logout())}>
                   {t('navbar.user.dropdown.logout')}

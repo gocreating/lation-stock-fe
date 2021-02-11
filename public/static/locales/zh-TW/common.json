@@ -47,7 +47,24 @@
   "me": {
     "subscription": {
       "title": "我的訂閱服務",
-      "noSubscription": "您目前沒有訂閱服務。"
+      "noSubscription": "您目前沒有訂閱服務。",
+      "table": {
+        "head": {
+          "product": "產品",
+          "plan": "方案",
+          "subscriptionStatus": "訂閱狀態"
+        },
+        "alert": {
+          "description": "您必須將 Line 官方帳號加為好友或解除封鎖才能使用",
+          "cta": "加朋友"
+        },
+        "checkbox": {
+          "label": {
+            "checked": "接收通知",
+            "unchecked": "已暫停"
+          }
+        }
+      }
     }
   },
   "404": {

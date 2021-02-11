@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import { useSelector } from 'react-redux'
 import { selectors as authSelectors } from '../ducks/auth'
+import { listProducts, selectors as productSelectors } from '../ducks/product'
 import AppLayout from '../components/AppLayout'
 import { withTranslation } from '../i18n'
 import { API_HOST } from '../utils/config'
 
 const ProductPage = ({ t }) => {
+  const dispatch = useDispatch()
   const router = useRouter()
-  const [products, setProducts] = useState([])
   const [userPlanIds, setUserPlanIds] = useState([])
   const isAuth = useSelector(authSelectors.getIsAuth)
+  const products = useSelector(productSelectors.getProducts)
 
-  useEffect(async () => {
-    const res = await fetch(`${API_HOST}/products`)
-    const { data } = await res.json()
-    setProducts(data.filter(p => p.plans.length > 0))
-  }, [])
+  useEffect(() => dispatch(listProducts()), [])
 
   useEffect(async () => {
     if (isAuth) {
