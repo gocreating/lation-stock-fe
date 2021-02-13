@@ -11,7 +11,10 @@ class LationDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link href="/fontawesome-free-5.15.1-web/css/fontawesome.min.css" rel="stylesheet" />
+          <link href="/fontawesome-free-5.15.1-web/css/brands.min.css" rel="stylesheet" />
+        </Head>
         <GoogleAdSenseHeader />
         <body>
           <FacebookRoot />
