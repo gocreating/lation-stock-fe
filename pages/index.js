@@ -10,7 +10,7 @@ import { API_HOST } from '../utils/config'
 
 const HomePage = ({ t }) => {
   const [words, setWords] = useState([])
-  const [showWordCloud, setShowWordCloud] = useState(false)
+  const [showWordFreqency, setShowWordFrequency] = useState(false)
   useEffect(async () => {
     const res = await fetch(`${API_HOST}/ptt/latest-push-content-cut-words?board=Stock&search=盤中閒聊`)
     const rawWords = await res.json()
@@ -27,7 +27,7 @@ const HomePage = ({ t }) => {
     }
     wordPairs.sort((a, b) => b[1] - a[1])
     setWords(wordPairs.filter(([_, frequency]) => frequency > 2))
-    setShowWordCloud(true)
+    setShowWordFrequency(true)
   }, [])
   return (
     <AppLayout title={t('home.title')} titleSuffix={false} noContainer>
@@ -37,20 +37,26 @@ const HomePage = ({ t }) => {
         </Container>
       </Jumbotron>
       <Container>
-        {showWordCloud ? (
-          <Image src={`${API_HOST}/static/latest-push-content-cut-words.png`} rounded fluid />
+        <Image src={`${API_HOST}/static/latest-push-content-cut-words.png`} rounded fluid />
+        {showWordFreqency ? (
+          <p style={{ marginTop: '2rem' }}>
+            {words.map((word, i) => (
+              <Badge pill variant="light" key={`${i}-${word[0]}`}>
+                {`${word[0]} (${word[1]})`}
+              </Badge>
+            ))}
+          </p>
         ) : (
-          <Spinner animation="border" role="status">
-            <span className="sr-only">Loading...</span>
-          </Spinner>
-        )}
-        <p style={{ marginTop: '2rem' }}>
-          {words.map((word, i) => (
-            <Badge pill variant="light" key={`${i}-${word[0]}`}>
-              {`${word[0]} (${word[1]})`}
-            </Badge>
-          ))}
-        </p>
+            <div className="text-center">
+              <Spinner
+                animation="border"
+                role="status"
+                style={{ marginTop: '2rem' }}
+              >
+                <span className="sr-only">Loading...</span>
+              </Spinner>
+            </div>
+          )}
       </Container>
     </AppLayout>
   )
