@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import Image from 'react-bootstrap/Image'
 import Row from 'react-bootstrap/Row'
 import { selectors as authSelectors } from '../ducks/auth'
 import { listProducts, selectors as productSelectors } from '../ducks/product'
@@ -56,38 +57,46 @@ const ProductPage = ({ t }) => {
       <h2 className="text-center">{t('product.title')}</h2>
       <Container style={{ marginTop: 20 }}>
         {products.map(product => (
-          <React.Fragment key={product.id}>
-            <h3>{t(`productMap.${product.code}.title`)}</h3>
+          <div key={product.id}>
+            <h3 style={{ marginTop: 48 }}>
+              {t(`productMap.${product.code}.title`)}
+            </h3>
+            <hr />
             <Row>
               {product.plans.map(plan => {
                 const isOrderExist = userPlanIds.includes(plan.id)
                 return (
-                  <Col
-                    key={plan.id}
-                    style={{ border: '1px solid #ddd', borderRadius: 5, padding: 15 }}
-                  >
-                    <h4>{t(`productMap.${product.code}.plan.${plan.code}.title`)}</h4>
-                    <p>{t(`productMap.${product.code}.plan.${plan.code}.description`)}</p>
-                    <p>
-                      <strong>
-                        {t(`productMap.${product.code}.plan.${plan.code}.pricing`)}
-                      </strong>
-                    </p>
-                    <Button
-                      variant="primary"
-                      size="lg"
-                      disabled={!isAuth || isOrderExist}
-                      onClick={() => handleCreateOrder(plan.id)}
-                    >
-                      {isAuth && !isOrderExist && t('product.cta.default')}
-                      {!isAuth && t('product.cta.loginRequired')}
-                      {isOrderExist && t('product.cta.purchased')}
-                    </Button>
-                  </Col>
+                  <React.Fragment key={plan.id}>
+                    <Col md={12} lg={6}>
+                      <Image
+                        fluid rounded
+                        src={`/images/${product.code}_${plan.code}.jpg`}
+                      />
+                    </Col>
+                    <Col md={12} lg={6}>
+                      <h4 style={{ marginTop: 16 }}>{t(`productMap.${product.code}.plan.${plan.code}.title`)}</h4>
+                      <p>{t(`productMap.${product.code}.plan.${plan.code}.description`)}</p>
+                      <p>
+                        <strong>
+                          {t(`productMap.${product.code}.plan.${plan.code}.pricing`)}
+                        </strong>
+                      </p>
+                      <Button
+                        variant="primary"
+                        size="lg"
+                        disabled={!isAuth || isOrderExist}
+                        onClick={() => handleCreateOrder(plan.id)}
+                      >
+                        {isAuth && !isOrderExist && t('product.cta.default')}
+                        {!isAuth && t('product.cta.loginRequired')}
+                        {isOrderExist && t('product.cta.purchased')}
+                      </Button>
+                    </Col>
+                  </React.Fragment>
                 )
               })}
             </Row>
-          </React.Fragment>
+          </div>
         ))}
       </Container>
     </AppLayout>
