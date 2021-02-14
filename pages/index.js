@@ -3,8 +3,8 @@ import Badge from 'react-bootstrap/Badge'
 import Container from 'react-bootstrap/Container'
 import Image from 'react-bootstrap/Image'
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import Spinner from 'react-bootstrap/Spinner'
 import AppLayout from '../components/AppLayout'
+import Spinner from '../components/Spinner'
 import { withTranslation } from '../i18n'
 import { API_HOST } from '../utils/config'
 
@@ -46,17 +46,7 @@ const HomePage = ({ t }) => {
               </Badge>
             ))}
           </p>
-        ) : (
-            <div className="text-center">
-              <Spinner
-                animation="border"
-                role="status"
-                style={{ marginTop: '2rem' }}
-              >
-                <span className="sr-only">Loading...</span>
-              </Spinner>
-            </div>
-          )}
+        ) : <Spinner />}
       </Container>
     </AppLayout>
   )

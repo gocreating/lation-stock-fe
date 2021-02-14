@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector, useStore } from 'react-redux'
 import Link from 'next/link'
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
@@ -9,10 +9,12 @@ import { selectors as authSelectors } from '../../ducks/auth'
 import { listProducts, selectors as productSelectors } from '../../ducks/product'
 import { getLineFriendship, selectors as socialSelectors } from '../../ducks/social'
 import AppLayout from '../../components/AppLayout'
+import Spinner from '../../components/Spinner'
 import { withTranslation } from '../../i18n'
 import { API_HOST } from '../../utils/config'
 
 const SubscriptionPage = ({ t }) => {
+  const store = useStore()
   const dispatch = useDispatch()
   const [orderPlans, setOrderPlans] = useState([])
   const [subscriptions, setSubscriptions] = useState([])
@@ -20,6 +22,11 @@ const SubscriptionPage = ({ t }) => {
   const isAuth = useSelector(authSelectors.getIsAuth)
   const isLineFriend = useSelector(socialSelectors.getLineIsFriend)
   const products = useSelector(productSelectors.getProducts)
+  const state = store.getState()
+  const isLoaded = (
+    state.product.listProductsMeta.isRequestSuccess &&
+    state.social.getLineFriendshipMeta.isRequestSuccess
+  )
 
   useEffect(() => {
     dispatch(listProducts())
@@ -86,64 +93,66 @@ const SubscriptionPage = ({ t }) => {
   return (
     <AppLayout title={t('me.subscription.title')}>
       <h2>{t('me.subscription.title')}</h2>
-      {orderPlans.length === 0 ? (
-        <p>
-          {t('me.subscription.noSubscription')}
-        </p>
-      ) : (
-          <Table responsive disabled>
-            <thead>
-              <tr>
-                <th>{t('me.subscription.table.head.product')}</th>
-                <th>{t('me.subscription.table.head.plan')}</th>
-                <th>{t('me.subscription.table.head.subscriptionStatus')}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orderPlans.map(orderPlan => {
-                const isChecked = subscribedPlanIds.includes(orderPlan.plan_id)
-                const planId = orderPlan.plan_id
-                let product = {}
-                let plan = {}
-                products.forEach(iterProduct => {
-                  iterProduct.plans.forEach(iterPlan => {
-                    if (iterPlan.id === planId) {
-                      plan = iterPlan
-                      product = iterProduct
-                    }
+      {!isLoaded ? <Spinner /> : (
+        orderPlans.length === 0 ? (
+          <p>
+            {t('me.subscription.noSubscription')}
+          </p>
+        ) : (
+            <Table responsive disabled>
+              <thead>
+                <tr>
+                  <th>{t('me.subscription.table.head.product')}</th>
+                  <th>{t('me.subscription.table.head.plan')}</th>
+                  <th>{t('me.subscription.table.head.subscriptionStatus')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {orderPlans.map(orderPlan => {
+                  const isChecked = subscribedPlanIds.includes(orderPlan.plan_id)
+                  const planId = orderPlan.plan_id
+                  let product = {}
+                  let plan = {}
+                  products.forEach(iterProduct => {
+                    iterProduct.plans.forEach(iterPlan => {
+                      if (iterPlan.id === planId) {
+                        plan = iterPlan
+                        product = iterProduct
+                      }
+                    })
                   })
-                })
-                return (
-                  <tr key={orderPlan.id}>
-                    <td>{t(`productMap.${product.code}.title`)}</td>
-                    <td>{t(`productMap.${product.code}.plan.${plan.code}.title`)}</td>
-                    <td>
-                      {isLineFriend ? (
-                        <Form.Check
-                          type="checkbox"
-                          label={isChecked ? t('me.subscription.table.checkbox.label.checked') : t('me.subscription.table.checkbox.label.unchecked')}
-                          checked={isChecked}
-                          onChange={(e) => handleSubscriptionChange(orderPlan, e.target.checked)}
-                        />
-                      ) : (
-                          <Alert variant="warning">
-                            <p>
-                              {t('me.subscription.table.alert.description')}
-                            </p>
-                            <Link href={`${API_HOST}/auth/line/aggressive-bot-prompt`}>
-                              <Button variant="success">
-                                <i className="fab fa-line"></i> {t('me.subscription.table.alert.cta')}
-                              </Button>
-                            </Link>
-                          </Alert>
-                        )}
-                    </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </Table>
-        )}
+                  return (
+                    <tr key={orderPlan.id}>
+                      <td>{t(`productMap.${product.code}.title`)}</td>
+                      <td>{t(`productMap.${product.code}.plan.${plan.code}.title`)}</td>
+                      <td>
+                        {isLineFriend ? (
+                          <Form.Check
+                            type="checkbox"
+                            label={isChecked ? t('me.subscription.table.checkbox.label.checked') : t('me.subscription.table.checkbox.label.unchecked')}
+                            checked={isChecked}
+                            onChange={(e) => handleSubscriptionChange(orderPlan, e.target.checked)}
+                          />
+                        ) : (
+                            <Alert variant="warning">
+                              <p>
+                                {t('me.subscription.table.alert.description')}
+                              </p>
+                              <Link href={`${API_HOST}/auth/line/aggressive-bot-prompt`}>
+                                <Button variant="success">
+                                  <i className="fab fa-line"></i> {t('me.subscription.table.alert.cta')}
+                                </Button>
+                              </Link>
+                            </Alert>
+                          )}
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </Table>
+          )
+      )}
     </AppLayout>
   )
 }
