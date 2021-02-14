@@ -26,7 +26,7 @@ const HomePage = ({ t }) => {
       wordPairs.push([word, wordCount[word]])
     }
     wordPairs.sort((a, b) => b[1] - a[1])
-    setWords(wordPairs.filter(([_, frequency]) => frequency > 2))
+    setWords(wordPairs.filter(([word, frequency]) => (word.length < 20 && frequency > 2)))
     setShowWordFrequency(true)
   }, [])
   return (
