@@ -130,7 +130,7 @@ const SubscriptionPage = ({ t }) => {
                             <p>
                               {t('me.subscription.table.alert.description')}
                             </p>
-                            <Link as={Button} variant="success" href={`${API_HOST}/auth/line/aggressive-bot-prompt`}>
+                            <Link href={`${API_HOST}/auth/line/aggressive-bot-prompt`}>
                               <Button variant="success">
                                 <i className="fab fa-line"></i> {t('me.subscription.table.alert.cta')}
                               </Button>
