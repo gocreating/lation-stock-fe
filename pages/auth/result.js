@@ -19,7 +19,7 @@ const AuthResultPage = ({ t }) => {
     }
   }, [query])
   return loginError ? (
-    <AppLayout title={t('auth.loginError.title')}>
+    <AppLayout title={t('auth.loginError.title')} noAd>
       <Alert variant="danger">
         <Alert.Heading>{t('auth.loginError.title')}</Alert.Heading>
         <p>{loginError}</p>

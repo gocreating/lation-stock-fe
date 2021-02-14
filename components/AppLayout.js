@@ -14,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 export const config = { amp: true }
 
-const AppLayout = ({ t, title, titleSuffix, noContainer, children }) => {
+const AppLayout = ({ t, title, titleSuffix, noContainer, noAd, children }) => {
   const router = useRouter()
   titleSuffix = titleSuffix === false ? '' : t('site.titleSuffix')
   return (
@@ -59,9 +59,11 @@ const AppLayout = ({ t, title, titleSuffix, noContainer, children }) => {
           {children}
         </Container>
       )}
-      <Container style={{ marginTop: '2rem', overflow: 'auto' }}>
-        <GoogleAdSenseAdUnit adUnitId={adUnitIdMap.adunit_stock_banner} />
-      </Container>
+      {!noAd && (
+        <Container style={{ marginTop: '2rem', overflow: 'auto' }}>
+          <GoogleAdSenseAdUnit adUnitId={adUnitIdMap.adunit_stock_banner} />
+        </Container>
+      )}
       <footer style={{ marginTop: '2rem' }}>
         <Container>
           <hr />

@@ -91,7 +91,7 @@ const SubscriptionPage = ({ t }) => {
   }
 
   return (
-    <AppLayout title={t('me.subscription.title')}>
+    <AppLayout title={t('me.subscription.title')} noAd>
       <h2>{t('me.subscription.title')}</h2>
       {!isLoaded ? <Spinner /> : (
         orderPlans.length === 0 ? (
