@@ -61,7 +61,7 @@
         "checkbox": {
           "label": {
             "checked": "接收通知",
-            "unchecked": "已暫停"
+            "unchecked": "暫停通知"
           }
         }
       }

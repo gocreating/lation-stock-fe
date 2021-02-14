@@ -61,7 +61,7 @@
         "checkbox": {
           "label": {
             "checked": "Receive notifications",
-            "unchecked": "Paused"
+            "unchecked": "Pause notifications"
           }
         }
       }
