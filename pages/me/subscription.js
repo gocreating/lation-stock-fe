@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector, useStore } from 'react-redux'
-import Link from 'next/link'
 import Alert from 'react-bootstrap/Alert'
-import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import Image from 'react-bootstrap/Image'
 import Table from 'react-bootstrap/Table'
 import { selectors as authSelectors } from '../../ducks/auth'
 import { listProducts, selectors as productSelectors } from '../../ducks/product'
@@ -102,8 +101,8 @@ const SubscriptionPage = ({ t }) => {
             <Table responsive disabled>
               <thead>
                 <tr>
-                  <th>{t('me.subscription.table.head.product')}</th>
-                  <th>{t('me.subscription.table.head.plan')}</th>
+                  <th style={{ whiteSpace: 'nowrap' }}>{t('me.subscription.table.head.product')}</th>
+                  <th style={{ whiteSpace: 'nowrap' }}>{t('me.subscription.table.head.plan')}</th>
                   <th>{t('me.subscription.table.head.subscriptionStatus')}</th>
                 </tr>
               </thead>
@@ -123,12 +122,13 @@ const SubscriptionPage = ({ t }) => {
                   })
                   return (
                     <tr key={orderPlan.id}>
-                      <td>{t(`productMap.${product.code}.title`)}</td>
-                      <td>{t(`productMap.${product.code}.plan.${plan.code}.title`)}</td>
+                      <td style={{ whiteSpace: 'nowrap' }}>{t(`productMap.${product.code}.title`)}</td>
+                      <td style={{ whiteSpace: 'nowrap' }}>{t(`productMap.${product.code}.plan.${plan.code}.title`)}</td>
                       <td>
                         {isLineFriend ? (
                           <Form.Check
-                            type="checkbox"
+                            id="subscription_check"
+                            type="switch"
                             label={isChecked ? t('me.subscription.table.checkbox.label.checked') : t('me.subscription.table.checkbox.label.unchecked')}
                             checked={isChecked}
                             onChange={(e) => handleSubscriptionChange(orderPlan, e.target.checked)}
@@ -138,11 +138,17 @@ const SubscriptionPage = ({ t }) => {
                               <p>
                                 {t('me.subscription.table.alert.description')}
                               </p>
-                              <Link href={`${API_HOST}/auth/line/aggressive-bot-prompt`}>
-                                <Button variant="success">
-                                  <i className="fab fa-line"></i> {t('me.subscription.table.alert.cta')}
-                                </Button>
-                              </Link>
+                              <a
+                                // href={`${API_HOST}/auth/line/aggressive-bot-prompt`}
+                                target="_blank"
+                                href={`${API_HOST}/line/add-friend`}
+                              >
+                                <Image
+                                  thumbnail
+                                  src={`${API_HOST}/line/official-account-qr.png`}
+                                  style={{ width: 160 }}
+                                />
+                              </a>
                             </Alert>
                           )}
                       </td>

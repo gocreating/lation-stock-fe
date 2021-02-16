@@ -55,7 +55,7 @@
           "subscriptionStatus": "Subscription Status"
         },
         "alert": {
-          "description": "You must add line offical account to friend to receive notifications",
+          "description": "You are still not a friend of stock wizard's line official account. Please scan the QR code or click on the image to add stock wizard to friend so that you can receive notifications properly.",
           "cta": "Add to Friend"
         },
         "checkbox": {
