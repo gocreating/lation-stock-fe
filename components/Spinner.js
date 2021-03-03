@@ -1,7 +1,7 @@
 import BSSpinner from 'react-bootstrap/Spinner'
 
 const Spinner = () => (
-  <div className="text-center">
+  <div className="text-center" style={{ minHeight: 200 }}>
     <BSSpinner
       animation="border"
       role="status"
